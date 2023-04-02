@@ -114,7 +114,7 @@ function Item({data,controller,labels,type}){
     const [isExpand,setIsExpand] = useState(false),
     {put,remove,refresh} = controller,
     {isLoading,run:doEdit} = put(data.id),
-    {run:doRemove} = remove(data.id),
+    {isLoading:isLoadingRemove,run:doRemove} = remove(data.id),
     [tempDesc,setTempDesc] = useState(''),
     [state,setState] = useState(emptyData),
     {title,due,description,label,completed} = state,
@@ -154,7 +154,7 @@ function Item({data,controller,labels,type}){
     return(
         
         <div className={`task-item${completed?" checked":""}`}>
-            <Loading spinning={isLoading}>
+            <Loading spinning={isLoading || isLoadingRemove}>
                 <div className="flex g-12">
                     
                     <div className="task-checkbox">
