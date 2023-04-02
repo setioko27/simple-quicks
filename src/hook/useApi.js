@@ -65,11 +65,6 @@ export const RequestApi = async(url, method = 'get', data = {}, msg= "",header=n
         if(msg) toast.success(msg)
         return req
     }catch(e){
-        //because json file in vercel is read only, the api always callback with status code 500, except in get methode
-        if(e.response.status === 500){
-            if(msg) toast.success(msg)
-            return 200
-        }
         if(msg !== null) handleError(e)
         throw CustomException(e)
     }
