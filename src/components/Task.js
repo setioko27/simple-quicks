@@ -82,6 +82,13 @@ export default function Task(){
                 {((isLoading && task.length === 0)) ? 
                         <PageLoading text="Loading Task ..." /> 
                     :
+                    isError ? <Result
+                                status="500"
+                                title="Error Load  Task Data"
+                                subTitle="Sorry, something went wrong."
+                                extra={<Button type="primary" onClick={refresh}>Refresh</Button>}
+                            />
+                        :
                         <>
                             {displayedData.length > 0 ? 
                                 displayedData.map(d => 
@@ -95,12 +102,6 @@ export default function Task(){
                                 ) : 
                                 <Empty icon={TaskIcon} text="No available task" action={<Button type="primary" onClick={handleAdd}>New Task</Button>} />
                             }
-                            {isError && <Result
-                                    status="500"
-                                    title="Error Load  Task Data"
-                                    subTitle="Sorry, something went wrong."
-                                    extra={<Button type="primary" onClick={refresh}>Refresh</Button>}
-                            />}
                        </>
                 }
                 </Loading>
