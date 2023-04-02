@@ -2,8 +2,11 @@ import axios from "axios"
 import { useRef, useState } from "react"
 import {toast} from "react-toastify"
 
-
-const API_URL = "https://642aa943b11efeb7599f11df.mockapi.io/api"
+//Sorry for using 2 different api calls, due to the limitation of the mock api free plan which limits a maximum of 2 endpoints in each account
+const API_URL = {
+    task : "https://642aa943b11efeb7599f11df.mockapi.io/api",
+    inbox : "https://642ad42600dfa3b547503202.mockapi.io/api"
+}
 const handleError = (e) =>{
     //console.log('error',e, e.response)
     if (e.response) {
@@ -50,12 +53,12 @@ const CustomException = (e) => {
     return error
 }
 
-export const RequestApi = async(url, method = 'get', data = {}, msg= "",header=null) => {
-    
+export const RequestApi = async(url, method = 'get', data = {}, msg= "",type="task",header=null) => {
+    console.log(type,API_URL[type])
     try{
         var Param = {
             method,
-            url: API_URL+"/"+url,
+            url: API_URL[type]+"/"+url,
             data
         }
         if(header){ Param.headers = header}
@@ -71,7 +74,7 @@ export const RequestApi = async(url, method = 'get', data = {}, msg= "",header=n
 }
 
 
-export const useApi = (url,method="get",body,msg = null) => {
+export const useApi = (url,type,method="get",body,msg = null) => {
     const cache = useRef({}),
     [data,setData] = useState([]),
     [isLoading,setLoading] = useState(method === "get"),
@@ -84,7 +87,7 @@ export const useApi = (url,method="get",body,msg = null) => {
             setLoading(false)
         }else{
             try{
-                const res = await RequestApi(url,method,body,msg)
+                const res = await RequestApi(url,method,body,msg,type)
                 setData(res.data)
                 cache.current[url] = res.data
             }catch(e){
@@ -99,11 +102,11 @@ export const useApi = (url,method="get",body,msg = null) => {
 
 }
 
-export const useCRUD = (url) => {
-    const useGet = () => useApi(url),
-    usePost = (msg=null) => useApi(url,'post',msg),
-    usePut = (id,msg) => useApi(url+"/"+id,"put",msg),
-    useRemove = (id,msg=null) => useApi(url+"/"+id,'delete',msg)
+export const useCRUD = (url,type="task") => {
+    const useGet = () => useApi(url,type),
+    usePost = (msg=null) => useApi(url,type,'post',msg),
+    usePut = (id,msg) => useApi(url+"/"+id,type,"put",msg),
+    useRemove = (id,msg=null) => useApi(url+"/"+id,type,'delete',msg)
 
     return {
         get:useGet,post:usePost,put:usePut,remove:useRemove
