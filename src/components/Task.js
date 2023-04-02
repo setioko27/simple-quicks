@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { dayLeft, fromMoment, toMoment, viewDate } from "helper/DataHelper";
 import { RequestApi, useCRUD } from "hook/useApi";
 import { AngleUpIcon, ClockIcon, CustomIcon, LabelIcon, PencilIcon, TaskIcon } from "icon";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Loading from "./Loading";
 import PC from "./PC";
 
@@ -28,10 +28,16 @@ export default function Task(){
     [labels,setLabels] = useState([]),
     [type,setType] = useState('my-task'),
     [displayedData,setDisplayedData] = useState([]),
+    bodyRef = useRef(),
     
     handleAdd = async() => {
         await doAdd({...emptyData,id: Date.now(),type})
-        refresh()
+        await refresh()
+        var body = bodyRef.current
+        setTimeout(()=>{body.scrollTo({top: body.scrollHeight,behavior:'smooth'})},500)
+        
+
+
     },
 
     loadDataLabel = async() => {
@@ -71,9 +77,9 @@ export default function Task(){
                 </Select>
                 <Button type="primary" onClick={handleAdd}>New Task</Button>
             </Header>
-            <Body>
+            <Body domRef={bodyRef}>
                 <Loading spinning={isLoadingAdd}>
-                {((isLoading && !task)) ? 
+                {((isLoading && task.length === 0)) ? 
                         <PageLoading text="Loading Task ..." /> 
                     :
                         <>

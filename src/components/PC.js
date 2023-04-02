@@ -4,7 +4,7 @@ import Loading from "./Loading";
 
 const PC = ({children}) => <div className="pc">{children}</div>,
     Header = ({children}) => <div className="pc-header task-header flex-between">{children}</div>,
-    Body = ({children}) => <div className="pc-body">{children}</div>,
+    Body = ({children,domRef}) => <div className="pc-body" ref={domRef}>{children}</div>,
     PageLoading = ({text}) => {
         return(
             <div className="pc-loading">
