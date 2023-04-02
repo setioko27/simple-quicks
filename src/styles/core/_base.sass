@@ -1,0 +1,120 @@
+
+img
+    max-width: 100%
+
+.pointer
+  cursor: pointer
+
+ul,ol
+  padding: 0
+  list-style: none
+
+p,ul,ol
+  margin: 0 0 24px
+  &:last-child
+    margin: 0
+
+button
+  &:hover,
+  &:focus
+    outline: none !important
+
+
+body
+  font-size: 14px
+  line-height: 1
+  font-weight: normal
+  padding: 0
+  margin: 0
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  font-family: 'Lato', sans-serif
+  color: $text
+  //overflow-x: hidden
+
+main
+  overflow: hidden
+  
+.disabled
+  pointer-events: none
+  color: #999
+
+.block
+  display: block
+.inline-block
+  display: inline-block
+
+
+
+$wg : 600 926
+@for $i from 1 through length($wg)
+  .w-#{nth($wg, $i)}
+    max-width: #{nth($wg, $i)}px
+
+/* flex & friends */
+.flex
+    display: flex
+    &-end
+      justify-content: flex-end
+    &-between
+      justify-content: space-between
+      align-items: center
+    &-center
+      justify-content: center
+      align-items: center
+    &-aligns-center
+      align-items: center
+    &-align-end
+      align-items: flex-end
+    &-bottom
+      align-items: end
+
+.flexs
+  &-auto
+    flex: 1 1
+
+/*gap */
+$mg : 0 4 8 10 12 16 20 24 22
+@for $i from 1 through length($mg)
+  .g-#{nth($mg, $i)}
+    gap: #{nth($mg, $i)}px
+  
+[class*="flex-"]
+  @extend .flex
+
+.hidden
+  display: none
+a
+  text-decoration: none
+
+
+/* Margin & Padding */
+$mg : 0 4 8 12 16 20 22 24 32 36 40 44 48 64 88 160
+@for $i from 1 through length($mg)
+  .mr-#{nth($mg, $i)}
+    margin-right: #{nth($mg, $i)}px
+  .ml-#{nth($mg, $i)}
+    margin-left: #{nth($mg, $i)}px
+  .mb-#{nth($mg, $i)}
+    margin-bottom: #{nth($mg, $i)}px
+  .mt-#{nth($mg, $i)}
+    margin-top: #{nth($mg, $i)}px
+  .mbt-#{nth($mg, $i)}
+    margin-top: #{nth($mg, $i)}px
+    margin-bottom: #{nth($mg, $i)}px
+  .pbt-#{nth($mg, $i)}
+    padding-top: #{nth($mg, $i)}px
+    padding-bottom: #{nth($mg, $i)}px
+  .pd-#{nth($mg, $i)}
+    padding: #{nth($mg, $i)}px
+  .pt-#{nth($mg, $i)}
+    padding-top: #{nth($mg, $i)}px
+  .pb-#{nth($mg, $i)}
+    padding-bottom: #{nth($mg, $i)}px
+.m-x-auto
+  margin-left: auto
+  margin-right: auto
+
+.text
+  &-red
+    color: $indicator-red !important

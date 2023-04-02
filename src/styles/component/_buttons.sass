@@ -1,0 +1,101 @@
+.float
+    &-wrap
+        position: fixed
+        bottom: 27px
+        right: 34px
+    &-btn
+        width: 60px
+        height: 60px
+        border-radius: 50%
+        text-align: left
+        background: #fff
+        display: flex
+        justify-content: center
+        align-items: center
+        color: $primary-grey-900
+        font-size: 26px
+        cursor: pointer
+        &-primary
+            color: #fff
+            background: $primary-blue
+            &:hover
+                background: lighten($primary-blue,10%)
+        &-yellow
+            color: $indicator-yellow
+        &-purple
+            color: $indicator-purple
+
+    //Float Grpup
+    &-group,&-group-menu
+        display: flex
+        gap: 26px
+        align-items: center
+    &-group
+        &-toggle
+            position: relative
+            z-index: 2
+            
+            .float-btn
+                width: 68px
+                height: 68px
+                transition: all .5s
+                font-size: 40px
+        &-menu
+            flex-direction: row-reverse
+            transition: all .5s
+        &-option
+            text-align: center
+            margin-top: -26px
+            transition: all .5s
+            position: relative
+            z-index: 3
+            left: 0
+            p
+                display: block
+                margin: 0 0 12px
+                transition: all .5s
+            .float-btn
+                transition: all .5s
+            &.active
+                @for $i from 1 through 5
+                    &:nth-child(#{$i})
+                        left: #{($i - 1) * 86 + 93}px
+                .float-btn
+                    width: 68px
+                    height: 68px
+                    color: #fff
+                    &-yellow
+                        background: $indicator-yellow
+                    &-purple
+                        background: $indicator-purple
+                
+                &~ .float-group-option
+                    left: 86px
+
+        &.selected
+            .float-group
+                &-option
+                    p
+                        opacity: 0
+                        visibility: hidden
+                        //transform: translateY(10px)
+                &-toggle
+                    .float-btn
+                        transform: translateX(-15px)
+                        background: $primary-grey
+                        &:hover
+                            background: $primary-grey-200
+                
+        &:not(.open)
+            .float-group
+                &-menu
+                    visibility: hidden
+                    opacity: 0
+                    transform: translateX(100px)
+                &-option
+                    .float-btn
+                        transform: rotate(45deg) scale(0.9)
+    
+
+    
+

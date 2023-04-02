@@ -1,0 +1,26 @@
+@import "~slick-carousel/slick/slick.css"
+@import "~slick-carousel/slick/slick-theme.css"
+
+.slick-slider.gap-8
+    .slick-slide
+        padding: 0 4px
+.slick
+    &-prev, &-next
+        width: 40px
+        height: 40px
+        top: calc(50% - 20px)
+        background: #fff
+        border-radius: 50%
+        box-shadow: 0px 1px 2px rgba(0, 39, 21, 0.2)
+        z-index: 1
+        background: url("/assets/images/chevron--right.svg") no-repeat center #fff !important
+        transform: none
+        &:hover
+           opacity: 0.8
+        &::before
+            content: ""
+            display: none
+    &-prev
+        transform: scaleX(-1)
+    &-disabled
+        display: none !important

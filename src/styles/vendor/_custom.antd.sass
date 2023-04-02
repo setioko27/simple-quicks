@@ -1,0 +1,87 @@
+
+
+
+.ant-picker
+    &-dropdown
+        padding-left: 119px
+        .ant-picker-cell .ant-picker-cell-inner,.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before
+            border-radius: 50%
+        .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before
+            border-color: $primary-grey
+        .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner
+            background: #fff
+            border: 1px solid $primary-blue
+            color: $text
+        .ant-picker-header
+            border-bottom: none
+    &-today-btn
+        display: none
+    
+
+.ant-btn
+    height: 40px
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector
+    height: 40px
+    border-color: $primary-grey-200
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input
+    height: 40px
+.ant-select-single .ant-select-selector .ant-select-selection-item,.ant-select-single .ant-select-selector .ant-select-selection-placeholde
+    line-height: 38px
+    font-weight: 700
+.ant-checkbox
+    top: 0
+.ant-checkbox .ant-checkbox-inner
+    border: 2px solid #828282 !important
+    width: 18px
+    height: 18px
+    background: #fff !important
+.ant-checkbox .ant-checkbox-inner:after
+    border-color: #828282
+.ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-checked:not(.ant-checkbox-disabled):after
+    border: none
+.ant-popover .ant-popover-inner
+    padding: 0
+.ant-select-dropdown
+    width: auto !important
+    min-width: 0 !important
+    border: 1px solid $primary-grey-200
+    box-shadow: none
+    &.dropdown-filter
+        padding: 0
+        min-width: 200px !important
+        .ant-select-item-option
+            font-weight: 700
+            &:not(:last-child)
+                border-bottom: 1px solid $primary-grey-200
+            &-selected
+                display: none
+.ant-input-borderless
+    &:not(:focus)
+        padding-left: 0
+    &::placeholder
+        color: $text
+        opacity: 1
+
+.ant-tag
+    line-height: 28px
+    padding: 0 14px
+    color: $primary-grey
+    font-weight: 500
+.ant-select-selection-overflow-item > span > .ant-tag
+  position: relative
+  padding: 0
+  border: none
+  margin: 0
+
+  >
+    .ant-tag
+      margin: 0
+      border: none
+
+    .ant-tag-close-icon
+      position: absolute
+      top: calc(50% - 5px)
+      right: 15px
+
+.ant-select-multiple .ant-select-selection-overflow
+  gap: 12px

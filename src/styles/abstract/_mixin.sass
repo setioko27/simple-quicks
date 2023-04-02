@@ -1,0 +1,313 @@
+=animation($str)
+  -webkit-animation: #{$str}
+  -moz-animation: #{$str}
+  -ms-animation: #{$str}
+  -o-animation: #{$str}
+  animation: #{$str}
+
+=transition($args...)
+  -webkit-transition: $args
+  -moz-transition: $args
+  -ms-transition: $args
+  -o-transition: $args
+  transition: $args
+
+=clear
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+=placeholder($color)
+  &::placeholder
+    color: $color
+  &:-ms-input-placeholder
+    color: $color
+  &::-ms-input-placeholder
+    color: $color
+
+=opacity($opacity)
+  opacity: $opacity
+  $opacity-ie: $opacity * 100
+  filter: alpha(opacity = $opacity-ie)
+
+=transform($translate3d)
+  transform: $translate3d
+  -webkit-transform: $translate3d
+  -moz-transform: $translate3d
+  -o-transform: $translate3d
+  -ms-transform: $translate3d
+
+=background($path,$size: auto,$position:0 0,$repeat: no-repeat)
+  background: transparent url(#{$path}) $repeat $position
+  background-size: $size
+  -webkit-background-size: $size
+  -moz-background-size: $size
+=backgroundSize($val)
+  background-size: $val
+  -webkit-background-size: $val
+  -moz-background-size: $val
+=bgCover
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+=blockFull
+  display: block
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0 
+  right: 0
+  bottom: 0
+  left: 0
+=lastnomargin
+  &:last-child
+    margin-bottom: 0
+=filter($value)
+  -webkit-filter : $value
+  filter: $value
+=center()
+  align-items: center
+  display: flex
+  display: -webkit-flex
+  -webkit-align-items: center
+  -webkit-box-align: center
+  -webkit-box-pack: center
+  box-align: center
+
+=responsive($max:0,$min: 0)
+  @if $min == 0
+    @media(max-width: $max)
+      @content
+  @else if $max == 0
+    @media(min-width: $min)
+      @content
+  @else
+    @media(max-width: $max) and  (min-width: $min)
+      @content
+
+=mobile()
+  +responsive(767px)
+    @content
+=maxtablet()
+  +responsive(991px)
+    @content
+=mintablet()
+  +responsive(0,768px)
+    @content
+=minltablet()
+  +responsive(0,992px)
+    @content
+=min-ipadpro()
+  +responsive(0,1025px)
+    @content
+=max-ipadpro()
+  +responsive(1025px)
+    @content
+=tablet()
+  +responsive(991px,768px)
+    @content
+=tablets()
+  +responsive(1200px,768px)
+    @content
+=ltablet()
+  +responsive(1200px,992px)
+    @content
+=sdekstop()
+  +responsive(1200px,1024px)
+    @content
+=large()
+  +responsive(0,1200px)
+    @content
+=mac14()
+  +responsive(1600px,1300px)
+    @content
+=imac()
+  +responsive(1700px,1600px)
+    @content
+=imac19()
+  +responsive(0,1700px)
+    @content
+
+//IE8
+
+=clearfix()
+  *zoom: 1
+  &:before, &:after
+    content: " "
+    display: table
+  &:after
+    clear: both
+
+%visuallyhidden
+  margin: -1px
+  padding: 0
+  width: 1px
+  height: 1px
+  overflow: hidden
+  clip: rect(0 0 0 0)
+  clip: rect(0, 0, 0, 0)
+  position: absolute
+
+=imgBg($padding)
+  +backgroundSize(cover)
+  background-position: center
+  background-color: #000
+  display: block
+  position: relative
+  &:before
+    content: ""
+    display: block
+    padding: $padding
+  &> img.bg
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+
+=bgcenter
+  background-size: cover
+  background-position: center
+  background-color: #F2EEE4
+  background-repeat: no-repeat
+
+=absfull()
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+=bgcover()
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+=btnLink()
+  color: $colors-blue-400
+  opacity: 1
+  transition: all .3s ease
+  &:hover
+    color: $colors-blue-400
+    opacity: .75
+    text-decoration: none
+
+=triangle($direction,$width,$height,$color)
+  $w2 : $width/2
+  @if not index("up" "up-right" "right" "down-right" "down" "down-left" "left" "up-left",$direction)
+    @error "Direction must be `up`, `up-right`, `right`, `down-right`,`down`, `down-left`, `left` or `up-left`."
+  @else if not _is-color($color)
+    @error "`#{$color}` is not a valid color for the `$color` argument in the `triangle` mixin."
+  @else
+    border-style: solid
+    height: 0
+    width: 0
+
+    @if $direction == "up"
+      border-color: transparent transparent $color
+      border-width: 0 ($w2) $height
+    @else if $direction == "up-right"
+      border-color: transparent $color transparent transparent
+      border-width: 0 $width $width 0
+    @else if $direction == "right"
+      border-color: transparent transparent transparent $color
+      border-width: ($height / 2) 0 ($height / 2) $width
+    @else if $direction == "down-right"
+      border-color: transparent transparent $color
+      border-width: 0 0 $width $width
+    @else if $direction == "down"
+      border-color: $color transparent transparent
+      border-width: $height ($width / 2) 0
+    @else if $direction == "down-left"
+      border-color: transparent transparent transparent $color
+      border-width: $width 0 0 $width
+    @else if $direction == "left"
+      border-color: transparent $color transparent transparent
+      border-width: ($height / 2) $width ($height / 2) 0
+    @else if $direction == "up-left"
+      border-color: $color transparent transparent
+      border-width: $width $width 0 0
+
+=fontGenerator($name,$weight,$family)
+  @for $i from 1 through length($family)
+    $src: #{"/assets/fonts/"}#{nth($family, $i)}
+    @font-face
+      font-family : $name
+      font-display: swap
+      src         : local($name)
+      src         : url("#{$src}.eot")
+      src         : url("#{$src}.eot#iefix") format("embedded-opentype"), url("#{$src}.woff2") format("woff2"), url("#{$src}.woff") format("woff"), url("#{$src}.ttf") format("truetype")
+      font-style  : normal
+      font-weight : nth($weight, $i)
+
+=ellipsis($width: 100%,$display: inline-block)
+  display: $display
+  max-width: $width
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  word-wrap: normal
+
+// #padding
+=padding($a:1,$b:1,$c:1,$d:1)
+  padding: $a*16px $b*16px $c*16px $d*16px
+=pt($v: 1)
+  padding-top: $v*16px  
+  +maxtablet
+    padding-top: $v*8px
+=pb($v: 1)
+  padding-bottom: $v*16px
+  +maxtablet
+    padding-bottom: $v*8px
+=ptb($v: 1)
+  padding-top: $v*16px
+  padding-bottom: $v*16px
+  +maxtablet
+    padding-top: $v*8px
+    padding-bottom: $v*8px
+// #margin
+=margin($a:1,$b:1,$c:1,$d:1)
+  margin: $a*16px $b*16px $c*16px $d*16px
+=mt($v: 1)
+  margin-top: $v*16px
+  +maxtablet
+    margin-top: $v*8px
+=mb($v: 1)
+  margin-bottom: $v*16px
+  +maxtablet
+    margin-bottom: $v*8px
+=ml($v: 1)
+  margin-left: $v*16px
+=mr($v: 1)
+  margin-right: $v*16px
+=mtb($v: 1)
+  margin-top: $v*16px
+  margin-bottom: $v*16px
+  +maxtablet
+    margin-top: $v*8px
+    margin-bottom: $v*8px
+
+// chevron
+=chevronDown($x: 6px, $c: $colors-dark)
+  content: ""
+  width: 0
+  height: 0
+  border-left: $x solid transparent
+  border-right: $x solid transparent
+  border-top: $x solid $c
+
+@function rem($val)
+  $remVal: ($val / 16) + rem
+  @return $remVal
+
+=font-400
+  font-weight: 400
+
+=font-600
+  font-weight: 600
+
+=font-700
+  font-weight: 700
