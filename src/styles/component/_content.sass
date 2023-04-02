@@ -11,6 +11,16 @@
     &-body
         max-height: calc(64vh - 110px)
         overflow: auto
+        &::-webkit-scrollbar
+            width: 5px
+        &::-webkit-scrollbar-track
+            background: #fff
+            border-radius: 10px
+        &::-webkit-scrollbar-thumb
+            background: $primary-blue
+            border-radius: 5px
+        &::-webkit-scrollbar-thumb:window-inactive
+            background: rgba(#333,.4)
     &-loading,&-empty
         display: flex
         align-items: center
