@@ -65,7 +65,7 @@ export default function Task(){
     
     return(
         <PC>
-            <Header>
+            <Header className="task-header">
                 <Select
                     value={type} 
                     onChange={v => setType(v)} 

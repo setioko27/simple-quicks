@@ -9,6 +9,8 @@ export {ReactComponent as ClockIcon} from "./ic-clock.svg"
 export {ReactComponent as PencilIcon} from "./ic-pencil.svg"
 export {ReactComponent as LabelIcon} from "./ic-label.svg"
 export {ReactComponent as LoadingIcon} from "./ic-loading.svg"
+export {ReactComponent as UserIcon} from "./ic-user.svg"
+export {ReactComponent as DownIcon} from "./ic-down.svg"
 
 export const CustomIcon = (props) =>{
     return(

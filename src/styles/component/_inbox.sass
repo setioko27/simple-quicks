@@ -1,0 +1,183 @@
+.inbox-header-input.ant-input-affix-wrapper
+  padding: 4px 58px
+
+.ant-avatar
+    &-blue
+        background: $primary-blue
+    &-group > *
+        &:not(:first-child)
+            margin-inline-start: -17px
+
+        &:nth-child(2)
+            background: $primary-blue
+
+.chat
+    &-list
+        &-item
+            cursor: pointer
+            padding: 22px 0
+            &:first-child
+                padding-top: 0
+
+            &:not(:last-child)
+                border-bottom: 1px solid #828282
+            &:hover
+                background: #f9f9f9
+
+
+        &-left
+            flex: 0 0 51px
+
+        &-name
+            font-weight: 700
+            color: $primary-blue
+            font-size: 16px
+            max-width: calc(100% - 128px)
+
+        &-created
+            flex: 0 0 112px
+            font-size: 14px
+
+        &-right
+            flex: 1 0 0
+
+        
+        &-created,&-name
+            line-height: 18px
+
+        &-last
+            margin-top: 10px
+            line-height: 1
+            &.new
+                position: relative
+                &::after
+                    content: ""
+                    position: absolute
+                    right: 0
+                    top: calc(50% - 5px)
+                    width: 10px
+                    height: 10px
+                    border-radius: 50%
+                    background: $indicator-red
+    &-room
+        margin: -24px -32px
+
+        &-header
+            padding: 20px 24px
+            border-bottom: 1px solid #bdbdbd
+            height: 88px
+        &-back, &-close
+            font-size: 16px
+
+        &-header-main
+            flex: 1 0 0
+
+        &-name
+            color: blue
+            font-weight: 700
+            font-size: 16px
+
+        &-body
+            height: calc(64vh - 169px)
+            overflow: auto
+            padding: 24px
+            .pc-empty
+                max-height: calc(64vh - 217px)
+
+    &-date,&-new
+        position: relative
+        text-align: center
+
+        &> span
+            display: inline-block
+            margin: auto
+            padding: 0 30px
+            background: #fff
+            position: relative
+
+        &:before
+            content: ""
+            position: absolute
+            left: 0
+            width: 100%
+            top: 50%
+            background: #4f4f4f
+            height: 1px
+    &-new
+        color: $indicator-red
+        &::before
+            background: $indicator-red
+    &-item
+        position: relative
+        margin: 30px 0
+        color: $primary-blue
+        &-sender
+            font-weight: 700
+            margin: 0 0 5px
+        &-box
+            padding: 10px
+            background: #f8f8f8
+            border-radius: 5px
+            max-width: 75%
+            display: inline-block
+            color: #4f4f4f
+            min-width: 200px
+            p
+                margin: 0 0 12px
+        &-menu
+            color: #4f4f4f
+        &-reply
+            background: #f2f2f2
+            padding: 10px 15px
+            color: #4f4f4f
+            border: 1px solid #e0e0e0
+            border-radius: 5px
+            margin: 0 0 8px
+            max-width: 75%
+            text-align: left
+            display: inline-block
+        &.sent
+            text-align: right
+
+            .chat-item
+                &-box
+                    text-align: left
+                    order: 2
+                &-menu
+                    margin-left: auto
+                &-reply
+                    margin-left: auto
+
+        &.purple
+            color: $chat-purple-text
+            .chat-item-box
+                background: $chat-purple-bg
+        &.yellow
+            color: $chat-yellow-text
+            .chat-item-box
+                background: $chat-yellow-bg
+        &.green
+            color: $chat-green-text
+            .chat-item-box
+                background: $chat-green-bg
+            
+    &-input
+        padding: 20px 24px 
+        &-field
+            flex: 1 0 0
+            position: relative
+        .ant-input
+            height: 40px
+        &-reply
+            position: absolute
+            bottom: 100%
+            left: 0
+            width: 100%
+            padding: 16px
+            background: #f2f2f2
+            border: 1px solid #828282
+            border-radius: 5px 5px 0 0
+            display: flex
+            gap: 20px
+            &> div:first-child
+                flex: 1 0 0

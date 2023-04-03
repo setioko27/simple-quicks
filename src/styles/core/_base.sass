@@ -64,6 +64,8 @@ $wg : 600 926
       align-items: center
     &-aligns-center
       align-items: center
+    &-align-start
+      align-items: flex-start
     &-align-end
       align-items: flex-end
     &-bottom
@@ -74,7 +76,7 @@ $wg : 600 926
     flex: 1 1
 
 /*gap */
-$mg : 0 4 8 10 12 16 20 24 22
+$mg : 0 4 8 10 12 14 16 20 24 22
 @for $i from 1 through length($mg)
   .g-#{nth($mg, $i)}
     gap: #{nth($mg, $i)}px
@@ -118,3 +120,17 @@ $mg : 0 4 8 12 16 20 22 24 32 36 40 44 48 64 88 160
 .text
   &-red
     color: $indicator-red !important
+  &-blue
+    color: $primary-blue !important
+
+*
+  &::-webkit-scrollbar
+      width: 5px
+  &::-webkit-scrollbar-track
+      background: #fff
+      border-radius: 10px
+  &::-webkit-scrollbar-thumb
+      background: $primary-blue
+      border-radius: 5px
+  &::-webkit-scrollbar-thumb:window-inactive
+      background: rgba(#333,.4)
