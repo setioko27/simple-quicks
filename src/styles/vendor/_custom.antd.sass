@@ -57,12 +57,19 @@
                 display: none
     .ant-select-item-option-content
         line-height: 1
-.ant-input-borderless
-    &:not(:focus)
-        padding-left: 0
-    &::placeholder
-        color: $text
-        opacity: 1
+.ant-input
+    border-color: #828282
+    &-affix,&-suffix
+        &-wrapper
+            border-color: #828282
+    &-borderless
+        &:not(:focus)
+            padding-left: 0
+        &::placeholder
+            color: $text
+            opacity: 1
+.ant-picker
+    border-color: #828282
 
 .ant-tag
     line-height: 28px
@@ -88,3 +95,10 @@
 .ant-select-multiple .ant-select-selection-overflow
   gap: 12px
 
+.ant-dropdown .ant-dropdown-menu
+  box-shadow: none
+  border: 1px solid #828282
+  padding: 0
+
+  .ant-dropdown-menu-item:not(:last-child)
+    border-bottom: 1px solid #828282

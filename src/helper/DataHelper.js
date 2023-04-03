@@ -26,3 +26,13 @@ export const dayLeft = (date) => {
     l = d ? d.diff(dayjs().startOf('day'),'days') : 9999
     return l < 11 && l >= 2 ? l+" days left" : l <= 1 && l >= 0 ? l+" day left" : null
 }
+
+export const viewChatUser = (name) => name === "Me" ? "You" : name
+
+export const isMoreNew = (date1,date2) => {
+    if(!date1 || !date2) return false
+    const d1 = toMoment(date1,"YYYY-MM-DD HH:mm:ss"),
+    d2 = toMoment(date2,"YYYY-MM-DD HH:mm:ss")
+
+    return d2.isAfter(d1)
+}
