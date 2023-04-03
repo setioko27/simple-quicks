@@ -1,10 +1,11 @@
+import React, { useEffect, useState, useRef } from "react";
 import {EllipsisOutlined} from "@ant-design/icons";
 import { Button, Checkbox, Col, DatePicker, Dropdown, Input, Result, Row, Select, Tag } from "antd";
 import dayjs from "dayjs";
+
 import { dayLeft, fromMoment, toMoment, viewDate } from "helper/DataHelper";
-import { RequestApi, useCRUD } from "hook/useApi";
+import {useAPI, useCRUD } from "hook/useApi";
 import { AngleUpIcon, ClockIcon, CustomIcon, LabelIcon, PencilIcon, TaskIcon } from "icon";
-import React, { useEffect, useState, useRef } from "react";
 import Loading from "./Loading";
 import PC from "./PC";
 
@@ -25,7 +26,7 @@ export default function Task(){
     const {get,remove,put,post} = useCRUD("task"),
     {data:task,isLoading,isError,run,refresh} = get(),
     {run:doAdd,isLoading:isLoadingAdd} = post(),
-    [labels,setLabels] = useState([]),
+    {data:labels,run:loadLabel} = useAPI('label'),
     [type,setType] = useState('my-task'),
     [displayedData,setDisplayedData] = useState([]),
     bodyRef = useRef(),
@@ -35,19 +36,7 @@ export default function Task(){
         await refresh()
         var body = bodyRef.current
         setTimeout(()=>{body.scrollTo({top: body.scrollHeight,behavior:'smooth'})},500)
-        
-
-
-    },
-
-    loadDataLabel = async() => {
-        try{
-            //if just need get or one of the methods only use RequestAPI
-            var res = await RequestApi('label')
-            setLabels(res.data)
-        }catch(e){}
     }
-
     useEffect(()=>{
         if(!task) return
         var t = task,
@@ -59,7 +48,7 @@ export default function Task(){
 
     useEffect(()=>{
         run()
-        loadDataLabel()
+        loadLabel()
     },[])// eslint-disable-line react-hooks/exhaustive-deps
 
     

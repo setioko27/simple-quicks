@@ -54,7 +54,6 @@ const CustomException = (e) => {
 }
 
 export const RequestApi = async(url, method = 'get', data = {}, msg= "",type="task",header=null) => {
-    console.log(type,API_URL[type])
     try{
         var Param = {
             method,
@@ -74,7 +73,7 @@ export const RequestApi = async(url, method = 'get', data = {}, msg= "",type="ta
 }
 
 
-export const useApi = (url,type,method="get",body,msg = null) => {
+const useHttp = (url,type,method="get",body,msg = null) => {
     const cache = useRef({}),
     [data,setData] = useState([]),
     [isLoading,setLoading] = useState(method === "get"),
@@ -102,11 +101,14 @@ export const useApi = (url,type,method="get",body,msg = null) => {
 
 }
 
+export const useAPI = (url,type="task",method="get") => useHttp(url,type,method)
+
+
 export const useCRUD = (url,type="task") => {
-    const useGet = () => useApi(url,type),
-    usePost = (msg=null) => useApi(url,type,'post',msg),
-    usePut = (id,msg) => useApi(url+"/"+id,type,"put",msg),
-    useRemove = (id,msg=null) => useApi(url+"/"+id,type,'delete',msg)
+    const useGet = () => useHttp(url,type),
+    usePost = (msg=null) => useHttp(url,type,'post',msg),
+    usePut = (id,msg) => useHttp(url+"/"+id,type,"put",msg),
+    useRemove = (id,msg=null) => useHttp(url+"/"+id,type,'delete',msg)
 
     return {
         get:useGet,post:usePost,put:usePut,remove:useRemove
