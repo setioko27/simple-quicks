@@ -66,6 +66,7 @@ const Popovers = ({children,content,title,eventKey}) =>{
             arrow={false}
             open={open}
             placement="topRight"
+            destroyTooltipOnHide
             content={content} trigger="click">
             <>{children}</>
         </Popover>
