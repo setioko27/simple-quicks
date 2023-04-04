@@ -31,12 +31,12 @@
 .ant-checkbox
     top: 0
 .ant-checkbox .ant-checkbox-inner
-    border: 2px solid #828282 !important
+    border: 2px solid $primary-grey-200 !important
     width: 18px
     height: 18px
     background: #fff !important
 .ant-checkbox .ant-checkbox-inner:after
-    border-color: #828282
+    border-color: $primary-grey-200
 .ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-checked:not(.ant-checkbox-disabled):after
     border: none
 .ant-popover .ant-popover-inner
@@ -56,10 +56,13 @@
             &-selected
                 display: none
 .ant-input
-    border-color: #828282
+    border-color: $primary-grey-200
+    &::placeholder
+        color: $text
+        opacity: 1
     &-affix,&-suffix
         &-wrapper
-            border-color: #828282
+            border-color: $primary-grey-200
     &-borderless
         &:not(:focus)
             padding-left: 0
@@ -67,7 +70,7 @@
             color: $text
             opacity: 1
 .ant-picker
-    border-color: #828282
+    border-color: $primary-grey-200
 
 .ant-tag
     line-height: 28px
@@ -93,10 +96,11 @@
 .ant-select-multiple .ant-select-selection-overflow
   gap: 12px
 
-.ant-dropdown .ant-dropdown-menu
-  box-shadow: none
-  border: 1px solid #828282
-  padding: 0
-
-  .ant-dropdown-menu-item:not(:last-child)
-    border-bottom: 1px solid #828282
+.ant-dropdown 
+    min-width: 126px !important
+    &-menu
+        box-shadow: none
+        border: 1px solid $primary-grey-200
+        padding: 0
+        &-item:not(:last-child)
+            border-bottom: 1px solid $primary-grey-200
