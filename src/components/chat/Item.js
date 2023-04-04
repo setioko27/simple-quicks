@@ -52,7 +52,7 @@ export default function Item({data}){
                             items:[
                                 {key:"reply",label:"Reply",className:"text-blue"},
                                 {key:"edit",label:"Edit",className:"text-blue", style:{display: isMe.current ? "block":"none"}},
-                                {key:"delete",label:"Delete",className:"text-red"},
+                                {key:"delete",label:"Delete",className:"text-red",style:{display: isMe.current ? "block":"none"}},
                             ],
                             onClick:handleMenuClick
                         }}
