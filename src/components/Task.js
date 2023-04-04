@@ -58,6 +58,7 @@ export default function Task(){
                 <Select
                     value={type} 
                     onChange={v => setType(v)} 
+                    className="task-filter"
                     popupClassName="dropdown-filter"
                 >
                     <Option value="my-task">My Task</Option>
@@ -152,12 +153,12 @@ function Item({data,controller,labels,type}){
                     </div>
                     <div className="task-main">
                         <Row className="task-head flex-between">
-                            <Col span={14}>
+                            <Col span={13}>
                                 <div className="task-name">
                                     {title  ? title :<Input placeholder="Type Task Title" onBlur={e => handleChange(e.target.value,'title')} />}
                                 </div>
                             </Col>
-                            <Col span={10} className="flex-end g-12">
+                            <Col span={11} className="flex-end g-12">
                                 <div className="task-due flex g-12">
                                     <span className="text-red">{dayLeft(due)}</span> 
                                     {viewDate(due)}

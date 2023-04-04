@@ -2,18 +2,25 @@
 
 
 .ant-picker
+    color: $text
+    border-color: $text
+    .ant-picker-suffix
+        color: $text
     &-dropdown
         padding-left: 119px
         .ant-picker-cell .ant-picker-cell-inner,.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before
             border-radius: 50%
         .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before
-            border-color: $primary-grey
+            border-color: #ddd
         .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner
             background: #fff
             border: 1px solid $primary-blue
             color: $text
         .ant-picker-header
             border-bottom: none
+        .ant-picker-panel-container
+            border: 1px solid $text
+            box-shadow: none
     &-today-btn
         display: none
     

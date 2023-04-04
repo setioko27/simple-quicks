@@ -1,16 +1,18 @@
 .task
     &-header
+        //padding-left: 84px
+    &-filter
         padding-left: 84px
     &-item
         padding: 22px 0
         &:first-child
             padding-top: 0
         &:not(:last-child)
-            border-bottom: 1px solid #828282
+            border-bottom: 1px solid $primary-grey-200
         &.checked
             .task-name
                 text-decoration: line-through
-                font-weight: 400
+                color: $primary-grey-200
     &-checkbox
         padding-top: 2px
     &-main
@@ -28,7 +30,7 @@
         width: 95%
         .icon
             margin-top: 8px
-            color: #4f4f4f
+            color: $text
             &.filled
                 color: $primary-blue
         &.bg-grey
@@ -47,7 +49,7 @@
             margin-top: 12px
     &-input-borderless
         &:focus
-            border: 1px solid #4f4f4f
+            border: 1px solid $text
     &-label-menu
         width: 277px !important
         .ant-tag
